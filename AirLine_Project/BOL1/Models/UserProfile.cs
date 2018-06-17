@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirSearch.Business.Models;
 
 namespace AirSearch.Business
 {
-    public class UserProfile
+    public class UserProfile : BaseModel
     {
         #region  UserProfile Field
         private int userId;
