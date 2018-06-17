@@ -11,6 +11,8 @@ namespace AirSearch.DataAccess
     {
         internal static string connectionString;
 
+        public int Test { get; set; }
+
         public DalBase()
         {
             connectionString = ConfigurationManager.ConnectionStrings["AirlineDbConnectionString"].ConnectionString;
