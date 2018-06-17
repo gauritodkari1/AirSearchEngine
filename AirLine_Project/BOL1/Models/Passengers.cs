@@ -3,41 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirSearch.Business.Models;
 
-namespace AirSearch.Business
+namespace AirSearch.Business.Models
 {
-    class Passengers
+   public class Passengers
     {
-        #region Passengers Field
-        private int passengerId;
-        private string firstName;
-        private string lastName;
-        private string mobileNo;
-        private string adharNo;
-        #endregion
 
-        #region Constroctors 
-        public Passengers()
-        {
 
-        }
+        /// <summary>
+        /// PassengerId
+        /// </summary>
+        public int PassengerId { set; get; }
+        /// <summary>
+        ///  FirstName
+        /// </summary>
+        public string FirstName { set; get; }
+        /// <summary>
+        ///  LastName
+        /// </summary>
+        public string LastName { set; get; }
+        /// <summary>
+        ///   MobileNo
+        /// </summary>
+        public string MobileNo { set; get; }
+        /// <summary>
+        ///   AdharNo
+        /// </summary>
+        public string AdharNo { set; get; }
+
+ 
+
         
-        #endregion
 
-        #region Properties 
-
-        public int PassengerId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int AdharNo { get; set; }
-        public string MobileNo { get; set; }
-        #endregion
-        #region Tostring method
-        public override string ToString()
-        {
-            return string.Format(@"PassangerId:{0},First Name: {1}, Last Name: {2},Adhhar number:{3},MobileNo: {4},", passengerId, firstName, lastName, adharNo, mobileNo);
-        }
-        #endregion
+        
+        
     }
 }
 

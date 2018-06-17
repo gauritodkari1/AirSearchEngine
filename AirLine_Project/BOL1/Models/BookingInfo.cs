@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirSearch.Business.Models;
 
-namespace AirSearch.Business
+namespace AirSearch.Business.Models
 {
-    public class BookingInfo
+    public class BookingInfo 
     {
         /// <summary>
         /// BookingId
