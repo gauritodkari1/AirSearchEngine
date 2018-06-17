@@ -1,9 +1,0 @@
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\obj\Debug\AirSearch.DataAccess.csprojResolveAssemblyReference.cache
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\obj\Debug\AirSearch.DataAccess.csproj.CoreCompileInputs.cache
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\bin\Debug\AirSearch.DataAccess.dll
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\bin\Debug\AirSearch.DataAccess.pdb
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\bin\Debug\AirSearch.Business.dll
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\bin\Debug\AirSearch.Business.pdb
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\obj\Debug\AirSearch.DataAccess.csproj.CopyComplete
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\obj\Debug\AirSearch.DataAccess.dll
-C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\DAL\obj\Debug\AirSearch.DataAccess.pdb
