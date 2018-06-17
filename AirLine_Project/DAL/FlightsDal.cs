@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using AirSearch.Business;
+using AirSearch.Business.Models;
 using AirSearch.Common;
 using MySql.Data.MySqlClient;
 
@@ -56,7 +57,7 @@ namespace AirSearch.DataAccess
                 using (var con = new MySqlConnection(connectionString))
                 {
                     
-                    string query = "UPDATE flights SET flightName=@flightName,capacity=@capacity, " +
+                    string query = "UPDATE flights SET flightName=@flightName,capacity=@capacity " +
                         "WHERE flightId=@flightId";
                     MySqlCommand cmd = new MySqlCommand(query, con);
 
@@ -64,7 +65,6 @@ namespace AirSearch.DataAccess
                     cmd.Parameters.Add(new MySqlParameter("@flightName", flight.FlightName));
                     cmd.Parameters.Add(new MySqlParameter("@capacity", flight.Capacity));
                     cmd.ExecuteNonQuery();
-                    
                     status = true;
                 }
             }
