@@ -1,0 +1,6 @@
+C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\AirSearch.Common\bin\Debug\AirSearch.Common.dll
+C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\AirSearch.Common\bin\Debug\AirSearch.Common.pdb
+C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\AirSearch.Common\obj\Debug\AirSearch.Common.csprojResolveAssemblyReference.cache
+C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\AirSearch.Common\obj\Debug\AirSearch.Common.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\AirSearch.Common\obj\Debug\AirSearch.Common.dll
+C:\Users\Lenovo\Desktop\gauri\Flight_Reservasion\AirLine_Project\AirSearch.Common\obj\Debug\AirSearch.Common.pdb
