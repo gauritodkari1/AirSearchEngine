@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using AirSearch.Business;
 using MySql.Data.MySqlClient;
+using AirSearch.Common;
 
 namespace AirSearch.DataAccess
 {
@@ -23,19 +24,22 @@ namespace AirSearch.DataAccess
                  string query = "INSERT INTO tripInfo(tId,source,destination,arrDateTime,depDateTime,avalSeats,fare) " +
                         "VALUES (@tId,@source,@destination,@arrDateTime,@depDateTime,@avalSeats,@fare)";
                     MySqlCommand cmd = new MySqlCommand(query, con);
-                    cmd.Parameters.Add(new MySqlParameter("@tId", tripInfo.TId));
+                    cmd.Parameters.Add(new MySqlParameter("@tId", tripInfo.TripId));
                     cmd.Parameters.Add(new MySqlParameter("@source", tripInfo.Source));
                     cmd.Parameters.Add(new MySqlParameter("@destination", tripInfo.Destination));
-                    cmd.Parameters.Add(new MySqlParameter("@arrDateTime", tripInfo.ArrDateTime));
-                    cmd.Parameters.Add(new MySqlParameter("@depDateTime", tripInfo.DepDateTime));
-                    cmd.Parameters.Add(new MySqlParameter("@avalSeats", tripInfo.AvalSeats));
+                    cmd.Parameters.Add(new MySqlParameter("@arrDateTime", tripInfo.ArrivalDateTime));
+                    cmd.Parameters.Add(new MySqlParameter("@depDateTime", tripInfo.DepartureDateTime));
+                    cmd.Parameters.Add(new MySqlParameter("@avalSeats", tripInfo.AvailableSeats));
                     cmd.Parameters.Add(new MySqlParameter("@fare", tripInfo.Fare));
                     cmd.ExecuteNonQuery();
                     status = true;
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
+            }
             return status;
         }
 
@@ -50,19 +54,22 @@ namespace AirSearch.DataAccess
                         "WHERE tId=@tId";
                     MySqlCommand cmd = new MySqlCommand(query, con);
 
-                    cmd.Parameters.Add(new MySqlParameter("@tId", tripInfo.TId));
+                    cmd.Parameters.Add(new MySqlParameter("@tId", tripInfo.TripId));
                     cmd.Parameters.Add(new MySqlParameter("@source", tripInfo.Source));
                     cmd.Parameters.Add(new MySqlParameter("@destination", tripInfo.Destination));
-                    cmd.Parameters.Add(new MySqlParameter("@arrDateTime", tripInfo.ArrDateTime));
-                    cmd.Parameters.Add(new MySqlParameter("@depDateTime", tripInfo.DepDateTime));
-                    cmd.Parameters.Add(new MySqlParameter("@avalSeats", tripInfo.AvalSeats));
+                    cmd.Parameters.Add(new MySqlParameter("@arrDateTime", tripInfo.ArrivalDateTime));
+                    cmd.Parameters.Add(new MySqlParameter("@depDateTime", tripInfo.DepartureDateTime));
+                    cmd.Parameters.Add(new MySqlParameter("@avalSeats", tripInfo.AvailableSeats));
                     cmd.Parameters.Add(new MySqlParameter("@fare", tripInfo.Fare));
                     cmd.ExecuteNonQuery();
                     status = true;
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
+            }
 
             return status;
         }
@@ -82,7 +89,10 @@ namespace AirSearch.DataAccess
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
+            }
 
             return status;
         }
@@ -106,13 +116,13 @@ namespace AirSearch.DataAccess
                             {
                                 TripInfo tripInfo = new TripInfo()
                                 {
-                                    TId = int.Parse(reader["tId"].ToString()),
+                                    TripId = int.Parse(reader["tId"].ToString()),
                                     Source = reader["source"].ToString(),
                                     Destination = reader["destination"].ToString(),
-                                    ArrDateTime = DateTime.Parse(reader["arrDateTime"].ToString()),
-                                    DepDateTime = DateTime.Parse(reader["depDateTime"].ToString()),
-                                    AvalSeats = int.Parse(reader["avalSeats"].ToString()),
-                                    Fare = float.Parse(reader["fare"].ToString())
+                                    ArrivalDateTime = DateTime.Parse(reader["arrDateTime"].ToString()),
+                                    DepartureDateTime = DateTime.Parse(reader["depDateTime"].ToString()),
+                                    AvailableSeats = int.Parse(reader["avalSeats"].ToString()),
+                                    Fare = decimal.Parse(reader["fare"].ToString())
 
                                 };
                                 tripInfos.Add(tripInfo);
@@ -126,7 +136,8 @@ namespace AirSearch.DataAccess
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
             }
 
             return tripInfos;
@@ -135,14 +146,14 @@ namespace AirSearch.DataAccess
 
 
 
-        public static List<TripInfo> GetListByDateSourceDest(string source, string destination, DateTime arrDateTime)
+        public static List<TripInfo> GetListByDateSourceDest(string Source,string Destination,DateTime ArrivalDateTime)
         {
          List<TripInfo> tripInfos = new List<TripInfo>();
             try
             {
                 using (var con = new MySqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM tripInfo WHERE source=@source AND destination=@destination AND arrDateTime=@arrDateTime";
+                    string query = "SELECT * FROM tripInfo WHERE source=@Source AND destination=@Destination AND arrDateTime=@ArrivalDateTime";
                     MySqlCommand cmd = new MySqlCommand(query, con);
 
                     MySqlDataReader reader = cmd.ExecuteReader();
@@ -154,13 +165,13 @@ namespace AirSearch.DataAccess
                             {
                                 TripInfo tripInfo = new TripInfo()
                                 {
-                                    TId = int.Parse(reader["tId"].ToString()),
+                                    TripId = int.Parse(reader["tId"].ToString()),
                                     Source = reader["source"].ToString(),
                                     Destination = reader["destination"].ToString(),
-                                    ArrDateTime = DateTime.Parse(reader["arrDateTime"].ToString()),
-                                    DepDateTime = DateTime.Parse(reader["depDateTime"].ToString()),
-                                    AvalSeats = int.Parse(reader["avalSeats"].ToString()),
-                                    Fare = float.Parse(reader["fare"].ToString())
+                                    ArrivalDateTime= DateTime.Parse(reader["arrDateTime"].ToString()),
+                                    DepartureDateTime = DateTime.Parse(reader["depDateTime"].ToString()),
+                                    AvailableSeats = int.Parse(reader["avalSeats"].ToString()),
+                                    Fare = decimal.Parse(reader["fare"].ToString())
 
                                 };
                                 tripInfos.Add(tripInfo);
@@ -173,7 +184,8 @@ namespace AirSearch.DataAccess
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
             }
 
             return tripInfos;

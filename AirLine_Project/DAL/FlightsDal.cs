@@ -21,14 +21,12 @@ namespace AirSearch.DataAccess
 
             try
             {
-                using (var mySqlConnection = new MySqlConnection(connectionString))
+                using (var con = new MySqlConnection(connectionString))
                 {
-                    mySqlConnection.Open();
-
-                    string query = "INSERT INTO flights (flightId,flightName,capacity) " +
+                   string query = "INSERT INTO flights (flightId,flightName,capacity) " +
                         "VALUES (@flightId,@flightName,@capacity)";
 
-                    var sqlCommand = new MySqlCommand(query, mySqlConnection);
+                    var sqlCommand = new MySqlCommand(query, con);
                     sqlCommand.Parameters.Add(new MySqlParameter("@flightId", flight.FlightId));
                     sqlCommand.Parameters.Add(new MySqlParameter("@flightName", flight.FlightName));
                     sqlCommand.Parameters.Add(new MySqlParameter("@capacity", flight.Capacity));
@@ -69,7 +67,10 @@ namespace AirSearch.DataAccess
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
+            }
 
             return status;
         }
@@ -91,7 +92,10 @@ namespace AirSearch.DataAccess
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
+            }
 
             return status;
         }
@@ -129,7 +133,10 @@ namespace AirSearch.DataAccess
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
+            }
             return flight;
         }
 
@@ -168,7 +175,8 @@ namespace AirSearch.DataAccess
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.LogException(ex);
+                throw new Exception("Error while connecting with database, please contact site admin for more detail.");
             }
 
             return flights;
