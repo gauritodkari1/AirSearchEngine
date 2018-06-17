@@ -7,7 +7,7 @@ using AirSearch.Business.Models;
 
 namespace AirSearch.Business.Models
 {
-    class Passengers : BaseModel
+   public class Passengers
     {
 
 

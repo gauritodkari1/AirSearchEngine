@@ -8,7 +8,7 @@ using AirSearch.Business.Models;
 
 namespace AirSearch.Business.Models
 {
-   public class Flights : BaseModel
+   public class Flights 
     {
         /// <summary>
         /// FlightId

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using AirSearch.Business.Models;
 
-namespace AirSearch.Business
+namespace AirSearch.Business.Models
 {
-    public class BookingInfo : BaseModel
+    public class BookingInfo 
     {
         /// <summary>
         /// BookingId
